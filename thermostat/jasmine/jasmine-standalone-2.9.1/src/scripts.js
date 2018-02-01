@@ -17,6 +17,7 @@ $( document ).ready(function() {
 
   $('#powerSaveOn').click(function(){
     thermostat.powerSaveMode(true);
+    updateTemperature();
     $('#powerSaveStatus').html(thermostat.powerSaveStatus);
   });
 
@@ -32,6 +33,6 @@ $( document ).ready(function() {
 
   function updateTemperature(){
     $('#currentTemp').html(thermostat.temperature);
-  };
+  }
 
 });

@@ -75,4 +75,5 @@ describe('Thermostat', function() {
     expect(thermostat.currentUsage()).toEqual('High usage');
   });
 
+
 });
