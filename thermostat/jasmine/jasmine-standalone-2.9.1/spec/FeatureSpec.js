@@ -22,29 +22,32 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(19);
   });
   it('minimum temperature is 10 degrees', function(){
-    expect(thermostat.minTemp).toEqual(minTemp)
+    expect(thermostat.minTemp).toEqual(minTemp);
   });
 
   it('cannot go below 10 degrees', function(){
     for (var i = 0; i < 11; i++) {
       thermostat.down();
     }
-    expect(thermostat.temperature).toEqual(minTemp)
+    expect(thermostat.temperature).toEqual(minTemp);
   });
 
   it('confirms that power saving mode is on by default', function(){
     expect(thermostat.powerSave).toEqual(true);
   });
 
-  // it('maximum temperature is 25 degrees', function(){
-  //   expect(thermostat.maxTempPowerSaveOn).toEqual(maxTempPowerSaveOn)
-  // });
+  it('maximum temperature is 25 degrees - when power save mode is ON', function(){
+    for (var i = 0; i < 10; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.temperature).toEqual(25);
+  });
 
-  // it('maximum temperature is 25 degrees - when power save mode is ON', function(){
-  //   while (thermostat.temperature <= 25) {
-  //     thermostat.up();
-  //   };
-  //   expect(thermostat.temperature).toEqual(maxTempPowerSaveOn)
-  // });
-
+  it('maximum temperature is 32 degrees - when power save mode is OFF', function(){
+    thermostat.powerSaveMode(false);
+    for (var i = 0; i < 15; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.temperature).toEqual(32);
+  });
 });
