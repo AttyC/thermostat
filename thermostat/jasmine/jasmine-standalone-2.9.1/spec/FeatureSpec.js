@@ -51,8 +51,28 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(32);
   });
 
-  it('Reset temp to 20 degrees', function () {
+  it('resets temperature to 20 degrees', function () {
     thermostat.reset();
     expect(thermostat.temperature).toEqual(20);
   });
+
+  it('displays low energy usage', function(){
+    for (var i = 0; i < 11; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.currentUsage()).toEqual('Low usage');
+  });
+
+  it('displays medium energy usage', function(){
+    expect(thermostat.currentUsage()).toEqual('Medium usage');
+  });
+
+  it('displays high energy usage', function(){
+    thermostat.powerSaveMode(false);
+    for (var i = 0; i < 15; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.currentUsage()).toEqual('High usage');
+  });
+
 });
