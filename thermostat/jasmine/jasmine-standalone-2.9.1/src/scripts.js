@@ -32,7 +32,8 @@ $( document ).ready(function() {
   });
 
   function updateTemperature(){
-    $('#currentTemp').html(thermostat.temperature);
+    $('#current-temperature').text(thermostat.temperature);
+    $('#current-temperature').attr('class', thermostat.currentUsage);
   }
 
 });

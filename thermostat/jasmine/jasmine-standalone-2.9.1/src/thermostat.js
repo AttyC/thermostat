@@ -1,5 +1,3 @@
-debugger
-
 function Thermostat(){
   this.temperature = 20;
   this.minTemp = 10;
@@ -11,7 +9,6 @@ function Thermostat(){
   this.powerSaveMode(true);
   this.lowUsage = 18;
   this.mediumUsage = 25;
-  //this.highUsage;
 }
 
 Thermostat.prototype.up = function () {
@@ -47,11 +44,11 @@ Thermostat.prototype.reset = function () {
 };
 
 Thermostat.prototype.currentUsage = function(){
-  if (this.temperature <= this.lowUsage) {
-    return "Low usage";
-  } else if (this.temperature <= 25) {
-    return "Medium usage";
+  if (this.temperature < this.lowUsage) {
+    return "low-usage";
+  } else if (this.temperature < this.mediumUsage) {
+    return "medium-usage";
   } else {
-    return "High usage";
+    return "high-usage";
   }
 }; // end of page!!
